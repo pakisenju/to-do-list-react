@@ -1,35 +1,52 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from "react";
+import "./input.css";
+import TodoForm from "./components/TodoForm";
+import TodoList from "./components/TodoList";
+import FilterButtons from "./components/FilterButtons";
 
-function App() {
-  const [count, setCount] = useState(0)
+import { useSelector, useDispatch } from "react-redux";
+import {
+	addTodo,
+	toggleTodo,
+	deleteTodo,
+	startEditing,
+	saveEditedTodo,
+	setFilter,
+} from "./redux/actions";
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+const App = () => {
+	const todos = useSelector((state) => state.todos);
+	const filter = useSelector((state) => state.filter);
+	const dispatch = useDispatch();
 
-export default App
+	const filteredTodos = todos.filter((todo) => {
+		if (filter === "all") return true;
+		if (filter === "active") return !todo.completed;
+		if (filter === "completed") return todo.completed;
+		return true;
+	});
+
+	return (
+		<div className="app">
+			<div className="content">
+				<h1 className="title">What's the plan for today?</h1>
+				<TodoForm addTodo={(text) => dispatch(addTodo(text))} />
+				<FilterButtons
+					filter={filter}
+					setFilter={(filter) => dispatch(setFilter(filter))}
+				/>
+				<TodoList
+					todos={filteredTodos}
+					toggleTodo={(id) => dispatch(toggleTodo(id))}
+					deleteTodo={(id) => dispatch(deleteTodo(id))}
+					startEditing={(id) => dispatch(startEditing(id))}
+					saveEditedTodo={(id, editedText) =>
+						dispatch(saveEditedTodo(id, editedText))
+					}
+				/>
+			</div>
+		</div>
+	);
+};
+
+export default App;
