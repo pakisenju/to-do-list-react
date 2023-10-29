@@ -29,7 +29,7 @@ const Todo = ({
 				type="checkbox"
 				checked={todo.completed}
 				onChange={() => toggleTodo(todo.id)}
-				className="checkbox checkbox-primary"
+				className="checkbox"
 				disabled={todo.editing}
 			/>
 			{todo.editing ? (
