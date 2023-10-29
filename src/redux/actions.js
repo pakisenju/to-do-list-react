@@ -30,7 +30,7 @@ export const saveEditedTodo = (id, editedText) => {
 		type: SAVE_EDITED_TODO,
 		payload: {
 			id,
-			editedText,
+			editedText
 		},
 	};
 };

@@ -28,16 +28,23 @@ const App = () => {
 
 	return (
 		<div className="app">
-			<h1 className="title">What's the plan for today?</h1>
-			<TodoForm addTodo={(text) => dispatch(addTodo(text))} />
-			<FilterButtons filter={filter} setFilter={(filter) => dispatch(setFilter(filter))} />
-			<TodoList
-				todos={filteredTodos}
-				toggleTodo={(id) => dispatch(toggleTodo(id))}
-				deleteTodo={(id) => dispatch(deleteTodo(id))}
-				startEditing={(id) => dispatch(startEditing(id))}
-				saveEditedTodo={(id, editedText) => dispatch(saveEditedTodo(id, editedText))}
-			/>
+			<div className="content">
+				<h1 className="title">What's the plan for today?</h1>
+				<TodoForm addTodo={(text) => dispatch(addTodo(text))} />
+				<FilterButtons
+					filter={filter}
+					setFilter={(filter) => dispatch(setFilter(filter))}
+				/>
+				<TodoList
+					todos={filteredTodos}
+					toggleTodo={(id) => dispatch(toggleTodo(id))}
+					deleteTodo={(id) => dispatch(deleteTodo(id))}
+					startEditing={(id) => dispatch(startEditing(id))}
+					saveEditedTodo={(id, editedText) =>
+						dispatch(saveEditedTodo(id, editedText))
+					}
+				/>
+			</div>
 		</div>
 	);
 };

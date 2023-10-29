@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faFloppyDisk } from "@fortawesome/free-solid-svg-icons";
 
 const Todo = ({
 	todo,
@@ -64,7 +65,7 @@ const Todo = ({
 					onClick={handleSave}
 					style={{ display: todo.editing ? "" : "none" }}
 				>
-					Save
+					<FontAwesomeIcon icon={faFloppyDisk} />
 				</button>
 			</div>
 		</li>

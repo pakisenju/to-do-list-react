@@ -49,6 +49,11 @@ const reducer = (state = initialState, action) => {
 				),
 			};
 		case SAVE_EDITED_TODO:
+			if(!action.payload.editedText) {
+				alert("Tidak boleh dikosongkan!");
+				return state;
+			}
+
 			return {
 				...state,
 				todos: state.todos.map((todo) =>
@@ -57,7 +62,6 @@ const reducer = (state = initialState, action) => {
 						: todo
 				),
 			};
-
 		case SET_FILTER:
 			return {
 				...state,

@@ -24,7 +24,7 @@ const TodoForm = ({ addTodo }) => {
 				/>
 				<button
 					type="submit"
-					className="btn btn-md btn-secondary"
+					className="btn btn-primary"
 					id="button-todo"
 				>
 					Add

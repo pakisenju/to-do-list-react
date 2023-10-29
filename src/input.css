@@ -8,12 +8,22 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+}
+
+.content {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .title {
     font-size: 32px;
     font-weight: 900;
     margin: 32px 0;
+    text-align: center;
 }
 
 #form-todo {
@@ -25,7 +35,7 @@
 }
 
 #control-todo {
-    width: 25vw;
+    width: 75%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -33,7 +43,7 @@
 }
 
 #input-todo {
-    width: 75%;
+    width: 80%;
     border-radius: 8px;
 }
 
@@ -50,7 +60,7 @@
 }
 
 #filter-button {
-    width: 25vw;
+    width: 75%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -62,7 +72,7 @@
 }
 
 #todo-list {
-    width: 25vw;
+    width: 75%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -83,4 +93,10 @@
 
 #button-action button {
     margin: 0 6px;
+}
+
+@media (max-width: 767px) {
+    .content {
+        width: 100%;
+    }
 }
